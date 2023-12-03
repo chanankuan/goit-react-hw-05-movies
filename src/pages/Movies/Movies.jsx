@@ -1,15 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { Outlet } from 'react-router-dom';
-import Header from 'components/Header/Header';
 
 const Movies = props => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  );
+  return <h1>This is Movies page</h1>;
 };
 
 Movies.propTypes = {};

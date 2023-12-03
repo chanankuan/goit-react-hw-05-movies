@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import Header from 'components/Header/Header';
-import { getTrending } from 'api-service/trending-service';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FlexItem,
   MovieInfo,
@@ -16,21 +13,24 @@ import {
   StyledContainer,
 } from './Home.styled';
 import star from '../../assets/images/star.svg';
+import { Loader } from 'components/Loader/Loader';
+import { getTrendingMovies } from 'api-service/movie-service';
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getTrending()
-      .then(response => response.json())
-      .then(data => setData(data.results))
-      .catch(err => console.error(err));
+    setLoading(true);
+    getTrendingMovies().then(setMovies).finally(setLoading(false));
   }, []);
+
+  const location = useLocation();
+  console.log(location);
 
   return (
     <>
-      <Header />
-      {!data.length && 'Loading...'}
+      {loading && <Loader />}
 
       <section>
         <StyledContainer>
@@ -39,9 +39,10 @@ const Home = () => {
             <div></div>
           </SectionTitle>
           <MovieList>
-            {data.map(
+            {movies.map(
               ({
                 id,
+                title,
                 original_title,
                 release_date,
                 poster_path,
@@ -51,10 +52,14 @@ const Home = () => {
                   <Link to={`movies/${id}`}>
                     <MoviePoster
                       src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-                      alt={original_title}
+                      alt={title}
                     />
                     <MovieInfo>
-                      <MovieTitle>{original_title}</MovieTitle>
+                      <MovieTitle>
+                        {title === original_title
+                          ? title
+                          : `${original_title} (${title})`}
+                      </MovieTitle>
                       <FlexItem>
                         <MovieYear>{release_date.slice(0, 4)}</MovieYear>
                         <MovieRating>
@@ -77,19 +82,3 @@ const Home = () => {
 Home.propTypes = {};
 
 export default Home;
-
-// adult: false;
-// backdrop_path: '/sp6egj5NHHRGmCMdIoTNdbLwACR.jpg';
-// genre_ids: (3)[(35, 14, 10751)];
-// id: 1022964;
-// media_type: 'movie';
-// original_language: 'en';
-// original_title: 'Candy Cane Lane';
-// overview: "A man, determined to win the neighborhood's annual Christmas decorating contest, makes a pact with an elf to help him win. However, the elf casts a spell bringing the twelve days of Christmas to life, bringing chaos to the small, unsuspecting town.";
-// popularity: 98.281;
-// poster_path: '/qQLC8iFicw1vVVbGMyyZzeghC4w.jpg';
-// release_date: '2023-11-29';
-// title: 'Candy Cane Lane';
-// video: false;
-// vote_average: 6.597;
-// vote_count: 31;
