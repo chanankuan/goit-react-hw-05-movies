@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCastDetails } from 'api-service/cast-service';
+import { getCastDetails } from 'api-service/movie-service';
 import { Flex, Item, Image, Name, Character } from './Cast.styled';
 import defaultImg from '../../../assets/images/nopersonphoto.png';
 

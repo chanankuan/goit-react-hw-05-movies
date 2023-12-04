@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getReviewsDetails } from 'api-service/reviews-service';
+import { getReviewsDetails } from 'api-service/movie-service';
 import { Author, Content, Item, List } from './Reviews.styled';
 
 const Reviews = () => {
