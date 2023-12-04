@@ -17,3 +17,9 @@ export const Container = styled.div`
 `;
 
 export const Section = styled.section``;
+
+export const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+`;

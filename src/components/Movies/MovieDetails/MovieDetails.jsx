@@ -24,10 +24,13 @@ import {
   StyledContainer,
   StyledNavLink,
 } from './MovieDetails.styled';
+import BasicModal from 'components/Modal/Modal';
+import { Button, Section } from 'components/Common';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const { movieId } = useParams();
 
   const location = useLocation();
@@ -37,6 +40,9 @@ const MovieDetails = () => {
     setLoading(true);
     getMovieDetails(movieId).then(setMovie).finally(setLoading(false));
   }, [movieId]);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const {
     backdrop_path,
@@ -52,17 +58,13 @@ const MovieDetails = () => {
   return (
     <>
       {loading && <Loader />}
-      <section>
+      <Section>
         <Backdrop backdrop={backdrop_path}>
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            rel="noreferrer"
-            target="_blank"
-          >
+          <Button type="button" onClick={handleOpen}>
             <img src={player} alt="Player icon" />
-          </a>
+          </Button>
         </Backdrop>
-      </section>
+      </Section>
       <StyledContainer>
         <GoBack to={backLinkHref}>
           <img src={arrowLeft} alt="Go back" width={16} /> Go back
@@ -97,6 +99,8 @@ const MovieDetails = () => {
         </Nav>
         <Outlet />
       </StyledContainer>
+
+      <BasicModal handleClose={handleClose} open={open} />
     </>
   );
 };

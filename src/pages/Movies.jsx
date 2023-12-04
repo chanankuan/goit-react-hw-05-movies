@@ -12,14 +12,13 @@ import PaginationRounded from 'components/Pagination/Pagination';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
-  const [currentPage, setCurrentPage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const movie = searchParams.get('query');
-    const page = searchParams.get('page');
+    const page = searchParams.get('page') || 1;
 
     if (!movie) return;
 
@@ -42,7 +41,7 @@ const Movies = () => {
     setSearchParams({ query: query });
   };
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (_, newPage) => {
     const movie = searchParams.get('query');
     setSearchParams({ query: movie, page: newPage });
   };
@@ -58,7 +57,7 @@ const Movies = () => {
           {loading && <Loader />}
           {noResults && <h2>No results. Please try another search.</h2>}
 
-          {totalPages && (
+          {totalPages > 1 && (
             <PaginationRounded
               totalPages={totalPages}
               handleChangePage={handleChangePage}

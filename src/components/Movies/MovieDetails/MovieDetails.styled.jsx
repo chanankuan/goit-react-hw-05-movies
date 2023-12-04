@@ -32,13 +32,13 @@ export const Backdrop = styled.div`
   }
 `;
 
-export const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  background: url(${({ imageUrl }) => imageUrl}) center no-repeat;
-  background-size: cover;
-  filter: blur(4px);
-`;
+// export const Background = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background: url(${({ imageUrl }) => imageUrl}) center no-repeat;
+//   background-size: cover;
+//   filter: blur(4px);
+// `;
 
 export const GoBack = styled(Link)`
   display: flex;
