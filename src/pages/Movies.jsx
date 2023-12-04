@@ -38,11 +38,14 @@ const Movies = () => {
   }, [searchParams]);
 
   const handleSubmit = query => {
+    if (!query) return;
     setSearchParams({ query: query });
   };
 
   const handleChangePage = (_, newPage) => {
     const movie = searchParams.get('query');
+    const page = searchParams.get('page');
+    if (!page && newPage === 1) return;
     setSearchParams({ query: movie, page: newPage });
   };
 
@@ -53,7 +56,7 @@ const Movies = () => {
           <Title>What do you want to watch?</Title>
           <SearchForm handleSubmit={handleSubmit} />
 
-          <MovieList movies={movies} path="" />
+          <MovieList movies={movies} />
           {loading && <Loader />}
           {noResults && <h2>No results. Please try another search.</h2>}
 

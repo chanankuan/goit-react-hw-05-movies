@@ -24,7 +24,7 @@ const Home = () => {
     <Section>
       <Container>
         <HomeTitle />
-        <MovieList movies={movies} path="movies/" />
+        <MovieList movies={movies} />
 
         {loading && <Loader />}
       </Container>

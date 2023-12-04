@@ -14,7 +14,7 @@ import {
   MovieYear,
 } from './MovieList.styled';
 
-const MovieList = ({ movies, path }) => {
+const MovieList = ({ movies }) => {
   const location = useLocation();
 
   return (
@@ -29,7 +29,7 @@ const MovieList = ({ movies, path }) => {
           vote_average,
         }) => (
           <MovieItem key={id}>
-            <Link to={path + id} state={{ from: location }}>
+            <Link to={`/movies/${id}`} state={{ from: location }}>
               <MoviePoster
                 src={
                   poster_path
@@ -62,7 +62,6 @@ const MovieList = ({ movies, path }) => {
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(Object),
-  path: PropTypes.string.isRequired,
 };
 
 export default MovieList;

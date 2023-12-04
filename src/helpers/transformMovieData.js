@@ -1,3 +1,6 @@
+import defaultBackdrop from '../assets/images/default-backdrop.jpeg';
+import defaultPoster from '../assets/images/default-movie-poster.jpeg';
+
 export const transformMovieData = data => {
   const {
     id,
@@ -20,8 +23,14 @@ export const transformMovieData = data => {
     original_language,
     original_title,
     overview,
-    backdrop_path: `https://image.tmdb.org/t/p/w300${backdrop_path}`,
-    poster_path: `https://image.tmdb.org/t/p/w300${poster_path}`,
+    backdrop_path: backdrop_path
+      ? `https://image.tmdb.org/t/p/w300${backdrop_path}`
+      : defaultBackdrop,
+    poster_path: poster_path
+      ? `https://image.tmdb.org/t/p/w300${poster_path}`
+      : defaultPoster,
+    // backdrop_path,
+    // poster_path,
     release_date: release_date.slice(0, 4),
     tagline,
     title,

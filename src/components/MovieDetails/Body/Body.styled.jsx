@@ -15,7 +15,6 @@ export const GoBack = styled(Link)`
 `;
 
 export const MovieItem = styled.div`
-  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
