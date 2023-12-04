@@ -10,6 +10,7 @@ import MovieList from 'components/MovieList/MovieList';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [noResults, setNoResults] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -17,7 +18,18 @@ const Movies = () => {
     if (!movie) return;
 
     setLoading(true);
-    getBySearchMovies(movie).then(setMovies).catch(setLoading(false));
+    getBySearchMovies(movie)
+      .then(data => {
+        data.length === 0 ? setNoResults(true) : setNoResults(false);
+
+        setMovies(data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [searchParams]);
 
   const handleSubmit = query => {
@@ -33,6 +45,7 @@ const Movies = () => {
 
           <MovieList movies={movies} path="" />
           {loading && <Loader />}
+          {noResults && <h2>No results. Please try another search.</h2>}
         </Container>
       </Section>
     </>
