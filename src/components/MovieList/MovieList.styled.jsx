@@ -26,10 +26,6 @@ export const MovieInfo = styled.div``;
 export const MovieTitle = styled.h3`
   font-weight: 400;
   font-size: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-y: hidden;
   margin-bottom: 10px;
 `;
 
