@@ -5,6 +5,7 @@ export const List = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
   row-gap: 20px;
+  margin-bottom: 40px;
 `;
 
 export const MovieItem = styled.li`
