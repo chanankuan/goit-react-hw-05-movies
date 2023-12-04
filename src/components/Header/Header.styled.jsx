@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-import { Container } from 'components/Container/Container.styled';
+import { Container } from 'components/Common';
 import { Link, NavLink } from 'react-router-dom';
 
-export const StyledHeader = styled.header`
-  /* box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5); */
-`;
+export const StyledHeader = styled.header``;
 
 export const StyledContainer = styled(Container)`
   display: flex;

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   padding: 20px;
   margin: 0 auto;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   @media screen and (min-width: 375px) {
     max-width: 375px;
   }
@@ -16,3 +16,5 @@ export const Container = styled.div`
     max-width: 980px;
   }
 `;
+
+export const Section = styled.section``;

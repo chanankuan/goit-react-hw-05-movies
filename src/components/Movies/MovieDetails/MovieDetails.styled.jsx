@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Container } from 'components/Container/Container.styled';
+import { Container } from 'components/Common';
 import { Link, NavLink } from 'react-router-dom';
 
 export const Backdrop = styled.div`
@@ -98,6 +98,9 @@ export const DetailsList = styled.ul`
   column-gap: 30px;
   row-gap: 10px;
   margin-bottom: 40px;
+  @media screen and (min-width: 768px) {
+    justify-content: start;
+  }
 `;
 
 export const DetailsItem = styled.li`

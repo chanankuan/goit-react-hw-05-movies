@@ -1,8 +1,8 @@
-import Home from 'pages/Home/Home';
-import Cast from 'pages/Movies/Cast/Cast';
-import MovieDetails from 'pages/Movies/MovieDetails/MovieDetails';
-import Movies from 'pages/Movies/Movies';
-import Reviews from 'pages/Movies/Reviews/Reviews';
+import Home from 'pages/Home';
+import Cast from 'components/Movies/Cast/Cast';
+import MovieDetails from 'components/Movies/MovieDetails/MovieDetails';
+import Movies from 'pages/Movies';
+import Reviews from 'components/Movies/Reviews/Reviews';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './Layout/Layout';
 
