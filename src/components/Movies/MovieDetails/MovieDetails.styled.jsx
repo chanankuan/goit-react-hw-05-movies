@@ -146,6 +146,7 @@ export const Accent = styled.span`
 export const Overview = styled.p`
   font-size: 1rem;
   line-height: 150%;
+  margin-bottom: 20px;
 `;
 
 export const InfoTitle = styled.h3`

@@ -5,7 +5,6 @@ import { Author, Content, Item, List } from './Reviews.styled';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [readMore, setReadMore] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -18,14 +17,12 @@ const Reviews = () => {
         "We don't have any reviews for this movie"
       ) : (
         <List>
-          {reviews.map(({ id, author, content }) => {
-            return (
-              <Item key={id}>
-                <Author>Author: {author}</Author>
-                <Content readMore={() => readMore(id)}>{content}</Content>
-              </Item>
-            );
-          })}
+          {reviews.map(({ id, author, content }) => (
+            <Item key={id}>
+              <Author>Author: {author}</Author>
+              <Content>{content}</Content>
+            </Item>
+          ))}
         </List>
       )}
     </>

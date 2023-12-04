@@ -9,9 +9,11 @@ export const Item = styled.li`
 export const Author = styled.p`
   margin-bottom: 10px;
 `;
+
 export const Content = styled.p`
+  color: #92929d;
+  line-height: 120%;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow-y: hidden;
   font-size: 0.8rem;

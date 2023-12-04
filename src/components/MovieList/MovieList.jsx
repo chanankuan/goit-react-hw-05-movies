@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import defaultPoster from '../../../assets/images/default-movie-poster.jpeg';
-import star from '../../../assets/images/star.svg';
+import defaultPoster from '../../assets/images/default-movie-poster.jpeg';
+import star from '../../assets/images/star.svg';
 import {
   FlexItem,
   List,
@@ -14,7 +14,9 @@ import {
   MovieYear,
 } from './MovieList.styled';
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, path }) => {
+  const location = useLocation();
+
   return (
     <List>
       {movies.map(
@@ -27,7 +29,7 @@ const MovieList = ({ movies }) => {
           vote_average,
         }) => (
           <MovieItem key={id}>
-            <Link to={`movies/${id}`}>
+            <Link to={path + id} state={{ from: location }}>
               <MoviePoster
                 src={
                   poster_path
@@ -58,6 +60,9 @@ const MovieList = ({ movies }) => {
   );
 };
 
-MovieList.propTypes = {};
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(Object),
+  path: PropTypes.string.isRequired,
+};
 
 export default MovieList;

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'api-service/movie-service';
+import { Loader } from 'components/Loader/Loader';
+import arrowLeft from '../../../assets/images/arrow-left.svg';
+import player from '../../../assets/images/player.svg';
+import calendar from '../../../assets/images/calendar.svg';
+import clock from '../../../assets/images/clock.svg';
+import genre from '../../../assets/images/ticket.svg';
 import {
   Accent,
   Backdrop,
@@ -18,17 +24,14 @@ import {
   StyledContainer,
   StyledNavLink,
 } from './MovieDetails.styled';
-import { Loader } from 'components/Loader/Loader';
-import arrowLeft from '../../../assets/images/arrow-left.svg';
-import player from '../../../assets/images/player.svg';
-import calendar from '../../../assets/images/calendar.svg';
-import clock from '../../../assets/images/clock.svg';
-import genre from '../../../assets/images/ticket.svg';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/home';
 
   useEffect(() => {
     setLoading(true);
@@ -43,6 +46,7 @@ const MovieDetails = () => {
     runtime,
     overview,
     genres,
+    vote_average,
   } = movie;
 
   return (
@@ -50,7 +54,6 @@ const MovieDetails = () => {
       {loading && <Loader />}
       <section>
         <Backdrop backdrop={backdrop_path}>
-          {/* <Background imageUrl={backdrop_path} /> */}
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             rel="noreferrer"
@@ -61,7 +64,7 @@ const MovieDetails = () => {
         </Backdrop>
       </section>
       <StyledContainer>
-        <GoBack to="/">
+        <GoBack to={backLinkHref}>
           <img src={arrowLeft} alt="Go back" width={16} /> Go back
         </GoBack>
         <MovieItem>
@@ -82,6 +85,7 @@ const MovieDetails = () => {
                 <Accent>{genres}</Accent>
               </DetailsItem>
             </DetailsList>
+            <Overview>User score: {vote_average * 10}%</Overview>
             <Overview>{overview}</Overview>
           </MovieInfo>
         </MovieItem>
