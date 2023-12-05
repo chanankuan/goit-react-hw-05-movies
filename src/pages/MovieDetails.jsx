@@ -7,11 +7,13 @@ import BasicModal from 'components/Modal/Modal';
 import { Section } from 'components/Common';
 import Body from 'components/MovieDetails/Body/Body';
 import AdditionalInfo from 'components/MovieDetails/AdditionalInfo/AdditionalInfo';
+import { Notify } from 'notiflix';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [videoKey, setVideoKey] = useState('');
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/home';
@@ -19,6 +21,11 @@ const MovieDetails = () => {
   useEffect(() => {
     setLoading(true);
     getMovieDetails(movieId).then(setMovie).finally(setLoading(false));
+    getMovieVideo(movieId)
+      .then(obj => setVideoKey(obj.key))
+      .catch(() => {
+        Notify.failure('Opps. Something went wrong. Please refresh the page');
+      });
   }, [movieId]);
 
   const handleOpen = () => setOpen(true);
@@ -57,7 +64,11 @@ const MovieDetails = () => {
           />
           <AdditionalInfo />
           <Outlet />
-          <BasicModal handleClose={handleClose} open={open} />
+          <BasicModal
+            handleClose={handleClose}
+            open={open}
+            videoKey={videoKey}
+          />
         </>
       )}
     </>

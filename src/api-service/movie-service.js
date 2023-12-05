@@ -59,5 +59,5 @@ export const getMovieVideo = async movie_id => {
     options
   );
 
-  return data;
+  return data.results.filter(result => result.name === 'Official Trailer')[0];
 };
