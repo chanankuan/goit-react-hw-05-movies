@@ -7,7 +7,6 @@ import BasicModal from 'components/Modal/Modal';
 import { Section } from 'components/Common';
 import Body from 'components/MovieDetails/Body/Body';
 import AdditionalInfo from 'components/MovieDetails/AdditionalInfo/AdditionalInfo';
-import { Notify } from 'notiflix';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
