@@ -24,7 +24,7 @@ const MovieDetails = () => {
     getMovieVideo(movieId)
       .then(obj => setVideoKey(obj.key))
       .catch(() => {
-        Notify.failure('Opps. Something went wrong. Please refresh the page');
+        setVideoKey('Q5RsQWm3rOY?&amp;start=45');
       });
   }, [movieId]);
 
