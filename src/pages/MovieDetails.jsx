@@ -4,7 +4,6 @@ import { getMovieDetails, getMovieVideo } from 'api-service/movie-service';
 import { Loader } from 'components/Loader/Loader';
 import Backdrop from 'components/MovieDetails/Backdrop/Backdrop';
 import BasicModal from 'components/Modal/Modal';
-import { Container, Section } from 'components/Common';
 import Body from 'components/MovieDetails/Body/Body';
 import AdditionalInfo from 'components/MovieDetails/AdditionalInfo/AdditionalInfo';
 
@@ -46,7 +45,6 @@ const MovieDetails = () => {
       {loading && <Loader />}
 
       {movie && (
-        // <Container>
         <>
           <Backdrop imgUrl={backdrop_path} handleOpen={handleOpen} />
           <Body
@@ -67,7 +65,6 @@ const MovieDetails = () => {
             videoKey={videoKey}
           />
         </>
-        // </Container>
       )}
     </>
   );
