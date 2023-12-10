@@ -15,7 +15,7 @@ const Home = () => {
     getTrendingMovies()
       .then(setMovies)
       .catch(() => {
-        Notify.failure('Opps. Something went wrong. Please refresh the page');
+        Notify.failure('Oops. Something went wrong. Please refresh the page');
       })
       .finally(setLoading(false));
   }, []);

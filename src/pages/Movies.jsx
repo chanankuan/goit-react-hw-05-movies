@@ -8,9 +8,11 @@ import { Loader } from 'components/Loader/Loader';
 import { Title } from 'components/Movies/SearchForm/SearchForm.styled';
 import { getBySearchMovies } from 'api-service/movie-service';
 import PaginationRounded from 'components/Pagination/Pagination';
+import InitialImage from 'components/Movies/InitialImage/InitialImage';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [initialLoad, setInitialLoad] = useState(true);
   const [totalPages, setTotalPages] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
@@ -23,6 +25,7 @@ const Movies = () => {
     if (!movie) return;
 
     setLoading(true);
+    setInitialLoad(false);
     getBySearchMovies(movie, page)
       .then(({ results, total_pages }) => {
         results.length === 0 ? setNoResults(true) : setNoResults(false);
@@ -30,7 +33,7 @@ const Movies = () => {
         setTotalPages(total_pages);
       })
       .catch(() => {
-        Notify.failure('Opps. Something went wrong. Please refresh the page');
+        Notify.failure('Oops. Something went wrong. Please refresh the page');
       })
       .finally(() => {
         setLoading(false);
@@ -55,7 +58,8 @@ const Movies = () => {
         <Title>What do you want to watch?</Title>
         <SearchForm handleSubmit={handleSubmit} />
 
-        <MovieList movies={movies} />
+        {movies.length > 0 && <MovieList movies={movies} />}
+        {initialLoad && <InitialImage />}
         {loading && <Loader />}
         {noResults && <h2>No results. Please try another search.</h2>}
 

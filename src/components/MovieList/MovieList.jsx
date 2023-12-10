@@ -45,10 +45,12 @@ const MovieList = ({ movies }) => {
                     : `${original_title} (${title})`}
                 </MovieTitle>
                 <FlexItem>
-                  <MovieYear>{release_date.slice(0, 4)}</MovieYear>
+                  <MovieYear>
+                    {release_date ? release_date.slice(0, 4) : '-'}
+                  </MovieYear>
                   <MovieRating>
                     <img src={star} alt="Star icon" width={15} />
-                    {vote_average === 0 ? '-' : vote_average.toFixed(1)}
+                    {vote_average ? vote_average.toFixed(1) : '-'}
                   </MovieRating>
                 </FlexItem>
               </MovieInfo>

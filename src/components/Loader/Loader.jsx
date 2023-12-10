@@ -2,7 +2,17 @@ import { Grid } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
-    <>
+    <div
+      style={{
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        width: '100vw',
+        height: '100vh',
+        backdropFilter: 'blur(10px)',
+        zIndex: 999,
+      }}
+    >
       <Grid
         color="#00BFFF"
         height={80}
@@ -14,6 +24,6 @@ export const Loader = () => {
           transform: 'translate(-50%, -50%)',
         }}
       />
-    </>
+    </div>
   );
 };
