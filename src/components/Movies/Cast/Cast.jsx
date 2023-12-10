@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getCastDetails } from 'api-service/movie-service';
 import { Flex, Item, Image, Name, Character } from './Cast.styled';
 import defaultImg from '../../../assets/images/nopersonphoto.png';
+import { Container, Section } from 'components/Common';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -13,25 +14,29 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <Flex>
-      {cast.map(({ credit_id, name, character, profile_path }) => {
-        const profileUrl = profile_path
-          ? `https://image.tmdb.org/t/p/w300${profile_path}`
-          : defaultImg;
+    <Section>
+      <Container>
+        <Flex>
+          {cast.map(({ credit_id, name, character, profile_path }) => {
+            const profileUrl = profile_path
+              ? `https://image.tmdb.org/t/p/w300${profile_path}`
+              : defaultImg;
 
-        return (
-          <Item key={credit_id}>
-            <Image src={profileUrl} alt={name} />
-            <Name>{name}</Name>
-            <Character>
-              Character:
-              <br />
-              {character}
-            </Character>
-          </Item>
-        );
-      })}
-    </Flex>
+            return (
+              <Item key={credit_id}>
+                <Image src={profileUrl} alt={name} />
+                <Name>{name}</Name>
+                <Character>
+                  Character:
+                  <br />
+                  {character}
+                </Character>
+              </Item>
+            );
+          })}
+        </Flex>
+      </Container>
+    </Section>
   );
 };
 

@@ -52,7 +52,13 @@ const Body = ({
                 <Accent>{genres}</Accent>
               </DetailsItem>
             </DetailsList>
-            <Overview>User score: {vote_average * 10}%</Overview>
+            <Overview>
+              User score:{' '}
+              {Number.isInteger(vote_average * 10)
+                ? (vote_average * 10).toString()
+                : (vote_average * 10).toFixed(1)}
+              %
+            </Overview>
             <Overview>{overview}</Overview>
           </MovieInfo>
         </MovieItem>

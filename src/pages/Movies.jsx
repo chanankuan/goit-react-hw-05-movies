@@ -50,25 +50,23 @@ const Movies = () => {
   };
 
   return (
-    <>
-      <Section>
-        <Container>
-          <Title>What do you want to watch?</Title>
-          <SearchForm handleSubmit={handleSubmit} />
+    <Section>
+      <Container>
+        <Title>What do you want to watch?</Title>
+        <SearchForm handleSubmit={handleSubmit} />
 
-          <MovieList movies={movies} />
-          {loading && <Loader />}
-          {noResults && <h2>No results. Please try another search.</h2>}
+        <MovieList movies={movies} />
+        {loading && <Loader />}
+        {noResults && <h2>No results. Please try another search.</h2>}
 
-          {totalPages > 1 && (
-            <PaginationRounded
-              totalPages={totalPages}
-              handleChangePage={handleChangePage}
-            />
-          )}
-        </Container>
-      </Section>
-    </>
+        {totalPages > 1 && (
+          <PaginationRounded
+            totalPages={totalPages}
+            handleChangePage={handleChangePage}
+          />
+        )}
+      </Container>
+    </Section>
   );
 };
 
