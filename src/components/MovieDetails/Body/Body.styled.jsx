@@ -65,7 +65,19 @@ export const DetailsItem = styled.li`
   align-items: center;
   column-gap: 6px;
 
-  &:first-of-type::after {
+  /* &:first-of-type::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    height: 120%;
+    width: 1px;
+    background-color: #92929d;
+  } */
+
+  /* @media screen and (min-width: 768px) { */
+  &:not(:last-of-type)::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -75,19 +87,7 @@ export const DetailsItem = styled.li`
     width: 1px;
     background-color: #92929d;
   }
-
-  @media screen and (min-width: 768px) {
-    &:not(:last-of-type)::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -15px;
-      transform: translateY(-50%);
-      height: 120%;
-      width: 1px;
-      background-color: #92929d;
-    }
-  }
+  /* } */
 `;
 
 export const Icon = styled.img`

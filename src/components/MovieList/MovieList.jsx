@@ -12,6 +12,7 @@ import {
   MovieRating,
   MovieTitle,
   MovieYear,
+  StyledLink,
 } from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
@@ -29,7 +30,7 @@ const MovieList = ({ movies }) => {
           vote_average,
         }) => (
           <MovieItem key={id}>
-            <Link to={`/movies/${id}`} state={{ from: location }}>
+            <StyledLink to={`/movies/${id}`} state={{ from: location }}>
               <MoviePoster
                 src={
                   poster_path
@@ -54,7 +55,7 @@ const MovieList = ({ movies }) => {
                   </MovieRating>
                 </FlexItem>
               </MovieInfo>
-            </Link>
+            </StyledLink>
           </MovieItem>
         )
       )}

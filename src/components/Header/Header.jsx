@@ -23,6 +23,7 @@ const Header = () => {
         <Navbar>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/movies">Movies</StyledLink>
+          <StyledLink to="/favorites">Favorites</StyledLink>
         </Navbar>
       </StyledContainer>
     </StyledHeader>

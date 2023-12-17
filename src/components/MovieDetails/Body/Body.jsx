@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import PropTypes from 'prop-types';
 import arrowLeft from '../../../assets/images/arrow-left.svg';
 import calendar from '../../../assets/images/calendar.svg';
