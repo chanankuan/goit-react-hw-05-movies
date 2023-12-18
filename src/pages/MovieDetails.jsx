@@ -56,6 +56,7 @@ const MovieDetails = () => {
             genres={genres}
             vote_average={vote_average}
             overview={overview}
+            movieId={movieId}
           />
           <AdditionalInfo />
           <Outlet />

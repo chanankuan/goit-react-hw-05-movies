@@ -6,13 +6,17 @@ const AdditionalInfo = () => {
   const ref = useRef(null);
 
   const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      ref.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
   };
 
   return (
     <Section>
       <Container>
-        <InfoTitle ref={ref}>Additional information</InfoTitle>
+        <InfoTitle ref={ref} name="infoTitle">
+          Additional information
+        </InfoTitle>
         <Nav>
           <StyledNavLink to="cast" onClick={handleClick}>
             Cast

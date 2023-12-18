@@ -14,7 +14,7 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <Section>
+    <Section name="myScrollToElement">
       <Container>
         <Flex>
           {cast.map(({ credit_id, name, character, profile_path }) => {

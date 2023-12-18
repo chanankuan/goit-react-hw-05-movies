@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from 'components/Common';
 import { Link } from 'react-router-dom';
 
 export const GoBack = styled(Link)`
@@ -53,7 +54,7 @@ export const DetailsList = styled.ul`
   flex-wrap: wrap;
   column-gap: 30px;
   row-gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     justify-content: start;
   }
@@ -65,18 +66,6 @@ export const DetailsItem = styled.li`
   align-items: center;
   column-gap: 6px;
 
-  /* &:first-of-type::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -15px;
-    transform: translateY(-50%);
-    height: 120%;
-    width: 1px;
-    background-color: #92929d;
-  } */
-
-  /* @media screen and (min-width: 768px) { */
   &:not(:last-of-type)::after {
     content: '';
     position: absolute;
@@ -87,7 +76,15 @@ export const DetailsItem = styled.li`
     width: 1px;
     background-color: #92929d;
   }
-  /* } */
+`;
+
+export const StyledButton = styled(Button)`
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  color: #fff;
+  padding: 0;
+  margin-bottom: 20px;
 `;
 
 export const Icon = styled.img`

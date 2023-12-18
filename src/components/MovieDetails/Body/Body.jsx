@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import arrowLeft from '../../../assets/images/arrow-left.svg';
 import calendar from '../../../assets/images/calendar.svg';
 import clock from '../../../assets/images/clock.svg';
 import genre from '../../../assets/images/ticket.svg';
+import addIcon from '../../../assets/images/circle-plus-solid.svg';
+import deleteIcon from '../../../assets/images/circle-minus-solid.svg';
 import {
   Accent,
   DetailsItem,
@@ -16,10 +17,12 @@ import {
   MoviePoster,
   MovieTitle,
   Overview,
+  StyledButton,
 } from './Body.styled';
 import { Container, Section } from 'components/Common';
 
 const Body = ({
+  movieId,
   backLinkHref,
   poster,
   title,
@@ -29,6 +32,30 @@ const Body = ({
   vote_average,
   overview,
 }) => {
+  const [savedMovieIds, setSavedMovieIds] = useState(
+    JSON.parse(localStorage.getItem('movieIds')) || []
+  );
+
+  const [isSaved, setIsSaved] = useState(
+    savedMovieIds.some(id => id === movieId)
+  );
+
+  useEffect(() => {
+    localStorage.setItem('movieIds', JSON.stringify(savedMovieIds));
+  }, [savedMovieIds]);
+
+  const handleAddMovie = movieId => {
+    console.log('handle add: ' + movieId);
+    setSavedMovieIds(prevState => [...prevState, movieId]);
+    setIsSaved(prevState => !prevState);
+  };
+
+  const handleDeleteMovie = movieId => {
+    console.log('handle delete: ' + movieId);
+    setSavedMovieIds(prevState => prevState.filter(id => id !== movieId));
+    setIsSaved(prevState => !prevState);
+  };
+
   return (
     <Section>
       <Container>
@@ -53,6 +80,18 @@ const Body = ({
                 <Accent>{genres}</Accent>
               </DetailsItem>
             </DetailsList>
+            <StyledButton
+              type="button"
+              onClick={() =>
+                isSaved ? handleDeleteMovie(movieId) : handleAddMovie(movieId)
+              }
+            >
+              <img
+                src={isSaved ? deleteIcon : addIcon}
+                alt={`${isSaved ? 'Delete' : 'Add'} icon`}
+              />
+              Watchlist
+            </StyledButton>
             <Overview>
               User score:{' '}
               {Number.isInteger(vote_average * 10)
