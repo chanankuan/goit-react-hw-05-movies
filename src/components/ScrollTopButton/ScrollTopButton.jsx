@@ -7,7 +7,7 @@ const ScrollTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
-    scroll.scrollToTop({ smooth: true });
+    scroll.scrollToTop({ duration: 500, smooth: true });
   };
 
   useEffect(() => {

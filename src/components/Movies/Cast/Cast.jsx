@@ -4,17 +4,23 @@ import { getCastDetails } from 'api-service/movie-service';
 import { Flex, Item, Image, Name, Character } from './Cast.styled';
 import defaultImg from '../../../assets/images/nopersonphoto.png';
 import { Container, Section } from 'components/Common';
+import { handleScroll } from 'helpers/scroll';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
   useEffect(() => {
-    getCastDetails(movieId).then(setCast).catch();
+    getCastDetails(movieId)
+      .then(setCast)
+      .catch(error => console.log(error))
+      .finally(() => {
+        handleScroll('cast');
+      });
   }, [movieId]);
 
   return (
-    <Section name="myScrollToElement">
+    <Section name="cast">
       <Container>
         <Flex>
           {cast.map(({ credit_id, name, character, profile_path }) => {

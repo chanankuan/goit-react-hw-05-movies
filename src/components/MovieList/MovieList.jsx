@@ -19,7 +19,7 @@ const MovieList = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <List>
+    <List name="movieList">
       {movies.map(
         ({
           id,
