@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon, Player, Section } from 'components/Common';
+import { Button, Icon, Section } from 'components/Common';
 import { Background } from './Backdrop.styled';
 import player from '../../../assets/images/player.svg';
 
