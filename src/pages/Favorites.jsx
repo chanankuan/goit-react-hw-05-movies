@@ -7,7 +7,7 @@ import MovieList from 'components/MovieList/MovieList';
 
 export const Favorites = () => {
   const [movies, setMovies] = useState([]);
-  const [movieIds, setmovieIds] = useState(
+  const [movieIds] = useState(
     JSON.parse(localStorage.getItem('movieIds')) || []
   );
 
