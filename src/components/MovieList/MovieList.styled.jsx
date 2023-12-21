@@ -1,16 +1,27 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { Player } from '../Common';
 
 export const List = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  row-gap: 20px;
+  gap: 20px;
   margin-bottom: 40px;
 `;
 
 export const MovieItem = styled.li`
   flex-basis: calc((100% - 20px) / 2);
+  &:hover {
+    .poster {
+      transition: filter 200ms ease-in-out;
+      filter: brightness(0.8);
+    }
+    .player {
+      transition: opacity 200ms ease-in-out;
+      opacity: 1;
+    }
+  }
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 4 * 20px) / 5);
   }
@@ -27,6 +38,10 @@ export const MoviePoster = styled.img`
   object-fit: cover;
   aspect-ratio: 0.66;
   margin-bottom: 20px;
+`;
+
+export const StyledPlayer = styled(Player)`
+  opacity: 0;
 `;
 
 export const MovieInfo = styled.div`

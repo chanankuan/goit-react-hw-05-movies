@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import defaultPoster from '../../assets/images/default-movie-poster.jpeg';
 import star from '../../assets/images/star.svg';
+import player from '../../assets/images/player.svg';
 import {
   FlexItem,
   List,
@@ -13,6 +14,7 @@ import {
   MovieTitle,
   MovieYear,
   StyledLink,
+  StyledPlayer,
 } from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
@@ -31,14 +33,22 @@ const MovieList = ({ movies }) => {
         }) => (
           <MovieItem key={id}>
             <StyledLink to={`/movies/${id}`} state={{ from: location }}>
-              <MoviePoster
-                src={
-                  poster_path
-                    ? `https://image.tmdb.org/t/p/w300/${poster_path}`
-                    : defaultPoster
-                }
-                alt={title}
-              />
+              <div style={{ position: 'relative' }}>
+                <MoviePoster
+                  className="poster"
+                  src={
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/w300/${poster_path}`
+                      : defaultPoster
+                  }
+                  alt={title}
+                />
+                <StyledPlayer
+                  className="player"
+                  src={player}
+                  alt="Player icon"
+                />
+              </div>
               <MovieInfo>
                 <MovieTitle>
                   {title === original_title

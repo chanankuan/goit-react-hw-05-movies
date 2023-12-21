@@ -15,7 +15,9 @@ export const Nav = styled.nav`
 export const StyledNavLink = styled(NavLink)`
   position: relative;
   font-weight: 400;
-  &.active::after {
+
+  &.active::after,
+  &:hover::after {
     content: '';
     position: absolute;
     bottom: -10px;

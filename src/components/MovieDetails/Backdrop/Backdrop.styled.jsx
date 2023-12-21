@@ -6,6 +6,7 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
   height: 400px;
+
   &::before {
     content: '';
     position: absolute;
@@ -18,13 +19,16 @@ export const Background = styled.div`
     filter: blur(5px);
     z-index: -1;
   }
+
   & img {
     cursor: pointer;
     transition: transform 200ms ease-in-out;
+
     &:hover {
       transform: scale(1.1);
     }
   }
+
   @media screen and (min-width: 1000px) {
     height: 600px;
   }

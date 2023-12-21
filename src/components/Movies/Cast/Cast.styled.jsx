@@ -15,7 +15,7 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 4 * 10px) / 5);
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 980px) {
     flex-basis: calc((100% - 6 * 10px) / 7);
   }
 `;
@@ -28,7 +28,7 @@ export const Image = styled.img`
   @media screen and (min-width: 768px) {
     min-height: 198px;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 980px) {
     min-height: 188px;
   }
 `;

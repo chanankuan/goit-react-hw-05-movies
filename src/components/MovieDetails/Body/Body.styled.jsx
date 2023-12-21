@@ -87,10 +87,6 @@ export const StyledButton = styled(Button)`
   margin-bottom: 20px;
 `;
 
-export const Icon = styled.img`
-  width: 20px;
-`;
-
 export const Accent = styled.span`
   color: #92929d;
   font-size: 0.8rem;

@@ -24,3 +24,12 @@ export const Button = styled.button`
   outline: none;
   padding: 0;
 `;
+
+export const Player = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const Icon = styled.img``;

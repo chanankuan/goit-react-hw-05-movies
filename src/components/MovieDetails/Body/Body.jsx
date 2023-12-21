@@ -11,7 +11,6 @@ import {
   DetailsItem,
   DetailsList,
   GoBack,
-  Icon,
   MovieInfo,
   MovieItem,
   MoviePoster,
@@ -19,7 +18,7 @@ import {
   Overview,
   StyledButton,
 } from './Body.styled';
-import { Container, Section } from 'components/Common';
+import { Container, Icon, Section } from 'components/Common';
 
 const Body = ({
   movieId,
@@ -68,15 +67,15 @@ const Body = ({
             <MovieTitle>{title}</MovieTitle>
             <DetailsList>
               <DetailsItem>
-                <Icon src={calendar} alt="Calendar icon" />
+                <Icon src={calendar} alt="Calendar icon" width={20} />
                 <Accent>{release_date}</Accent>
               </DetailsItem>
               <DetailsItem>
-                <Icon src={clock} alt="Clock icon" />
+                <Icon src={clock} alt="Clock icon" width={20} />
                 <Accent>{runtime} Minutes</Accent>
               </DetailsItem>
               <DetailsItem>
-                <Icon src={genre} alt="Ticket icon" />
+                <Icon src={genre} alt="Ticket icon" width={20} />
                 <Accent>{genres}</Accent>
               </DetailsItem>
             </DetailsList>
@@ -86,7 +85,7 @@ const Body = ({
                 isSaved ? handleDeleteMovie(movieId) : handleAddMovie(movieId)
               }
             >
-              <img
+              <Icon
                 src={isSaved ? deleteIcon : addIcon}
                 alt={`${isSaved ? 'Delete' : 'Add'} icon`}
               />
